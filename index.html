@@ -572,11 +572,92 @@ footer strong{
     padding:80px 0;
   }
 }
+/* ===== NXW ANIMATED CRYPTO BACKGROUND ===== */
+
+body{
+  position:relative;
+  background:#03040b;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:-50%;
+  z-index:-2;
+  pointer-events:none;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,.75) 1px, transparent 1.5px),
+    radial-gradient(circle, rgba(0,238,255,.55) 1px, transparent 1.5px),
+    radial-gradient(circle, rgba(168,108,255,.45) 1px, transparent 1.5px);
+  background-size:
+    90px 90px,
+    140px 140px,
+    190px 190px;
+  background-position:
+    0 0,
+    40px 60px,
+    100px 20px;
+  opacity:.32;
+  animation:nxwStars 55s linear infinite;
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  width:900px;
+  height:900px;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  z-index:-1;
+  pointer-events:none;
+  background:
+    radial-gradient(
+      circle,
+      rgba(0,238,255,.10),
+      rgba(111,45,255,.08) 35%,
+      rgba(255,0,220,.04) 55%,
+      transparent 72%
+    );
+  filter:blur(30px);
+  animation:nxwNebula 12s ease-in-out infinite alternate;
+}
+
+@keyframes nxwStars{
+  from{
+    transform:translate3d(0,0,0);
+  }
+  to{
+    transform:translate3d(180px,300px,0);
+  }
+}
+
+@keyframes nxwNebula{
+  0%{
+    transform:translate(-55%,-50%) scale(.9);
+    opacity:.55;
+  }
+  50%{
+    transform:translate(-45%,-55%) scale(1.15);
+    opacity:.9;
+  }
+  100%{
+    transform:translate(-50%,-45%) scale(1);
+    opacity:.65;
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  body::before,
+  body::after{
+    animation:none;
+  }
+}
+
 </style>
 </head>
 
 <body>
-
 <nav>
   <div class="container nav-inner">
 
