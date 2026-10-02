@@ -1,625 +1,887 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>NEXUS CORE AI WORLD | NXW</title>
-
-  <meta
-    name="description"
-    content="NXW is the community memecoin of the NEXUS CORE AI GLOBAL ecosystem, connecting AI, Web3, technology and a global community."
-  />
-
-  <meta name="theme-color" content="#050816" />
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(circle at 50% 15%, rgba(0, 174, 255, 0.16), transparent 30%),
-        radial-gradient(circle at 20% 40%, rgba(174, 0, 255, 0.12), transparent 25%),
-        #03050d;
-      color: #ffffff;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* BACKGROUND */
-
-    .stars {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -1;
-      opacity: 0.55;
-      background-image:
-        radial-gradient(#ffffff 1px, transparent 1px),
-        radial-gradient(#00eaff 1px, transparent 1px);
-      background-size: 70px 70px, 110px 110px;
-      background-position: 0 0, 30px 40px;
-    }
-
-    /* NAV */
-
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 7%;
-      background: rgba(3, 5, 13, 0.78);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(0, 234, 255, 0.15);
-    }
-
-    .brand {
-      font-size: 1.25rem;
-      font-weight: 900;
-      letter-spacing: 2px;
-    }
-
-    .brand span {
-      background: linear-gradient(90deg, #00eaff, #7d5cff, #ff37dc);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      color: #b8c2d9;
-      font-size: 0.9rem;
-      font-weight: 700;
-    }
-
-    .nav-links a:hover {
-      color: #00eaff;
-    }
-
-    /* HERO */
-
-    .hero {
-      min-height: 88vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 90px 20px 60px;
-    }
-
-    .hero-inner {
-      width: 100%;
-      max-width: 1100px;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 9px 18px;
-      margin-bottom: 28px;
-      border-radius: 999px;
-      border: 1px solid rgba(0, 234, 255, 0.35);
-      background: rgba(0, 234, 255, 0.06);
-      color: #67efff;
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 3px;
-    }
-
-    h1 {
-      font-size: clamp(3rem, 9vw, 7.5rem);
-      line-height: 0.9;
-      font-weight: 1000;
-      letter-spacing: -4px;
-      margin-bottom: 18px;
-      background: linear-gradient(
-        90deg,
-        #00eaff 5%,
-        #ffffff 35%,
-        #8c5cff 65%,
-        #ff36d7 100%
-      );
-      -webkit-background-clip: text;
-      color: transparent;
-      filter: drop-shadow(0 0 25px rgba(0, 234, 255, 0.15));
-    }
-
-    .subtitle {
-      font-size: clamp(1.3rem, 3vw, 2.1rem);
-      font-weight: 800;
-      letter-spacing: 5px;
-      margin-bottom: 28px;
-    }
-
-    .hero p {
-      max-width: 760px;
-      margin: 0 auto;
-      color: #aeb9cf;
-      font-size: 1.08rem;
-      line-height: 1.8;
-    }
-
-    .buttons {
-      margin-top: 38px;
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 14px 25px;
-      border-radius: 12px;
-      font-weight: 900;
-      border: 1px solid rgba(255,255,255,0.14);
-      transition: 0.25s ease;
-      cursor: pointer;
-    }
-
-    .btn-primary {
-      color: #02040a;
-      background: linear-gradient(90deg, #00eaff, #8c5cff);
-      border: none;
-    }
-
-    .btn-secondary {
-      background: rgba(255,255,255,0.04);
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 35px rgba(0, 234, 255, 0.18);
-    }
-
-    /* TOKEN */
-
-    .token-bar {
-      max-width: 1050px;
-      margin: -20px auto 90px;
-      padding: 25px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      border: 1px solid rgba(0, 234, 255, 0.16);
-      background: rgba(255,255,255,0.04);
-      border-radius: 20px;
-      backdrop-filter: blur(12px);
-    }
-
-    .token-item {
-      text-align: center;
-      padding: 15px;
-    }
-
-    .token-item small {
-      display: block;
-      color: #77839d;
-      margin-bottom: 8px;
-      letter-spacing: 1px;
-    }
-
-    .token-item strong {
-      font-size: 1.15rem;
-    }
-
-    /* SECTIONS */
-
-    section {
-      padding: 90px 7%;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 50px;
-    }
-
-    .section-title small {
-      color: #00eaff;
-      font-weight: 900;
-      letter-spacing: 4px;
-    }
-
-    .section-title h2 {
-      margin-top: 12px;
-      font-size: clamp(2rem, 5vw, 3.5rem);
-    }
-
-    .section-title p {
-      color: #8793aa;
-      margin: 18px auto 0;
-      max-width: 650px;
-      line-height: 1.7;
-    }
-
-    /* FOUR PILLARS */
-
-    .grid {
-      max-width: 1200px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
-
-    .card {
-      min-height: 260px;
-      padding: 30px 25px;
-      border-radius: 22px;
-      background:
-        linear-gradient(
-          145deg,
-          rgba(255,255,255,0.065),
-          rgba(255,255,255,0.015)
-        );
-      border: 1px solid rgba(255,255,255,0.09);
-      transition: 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(0, 234, 255, 0.45);
-      box-shadow: 0 20px 50px rgba(0, 234, 255, 0.08);
-    }
-
-    .icon {
-      font-size: 2.3rem;
-      margin-bottom: 25px;
-    }
-
-    .card h3 {
-      margin-bottom: 15px;
-      font-size: 1.2rem;
-    }
-
-    .card p {
-      color: #8d98ad;
-      line-height: 1.65;
-      font-size: 0.95rem;
-    }
-
-    /* SOLANA */
-
-    .solana {
-      max-width: 1100px;
-      margin: auto;
-      text-align: center;
-      padding: 70px 30px;
-      border-radius: 30px;
-      border: 1px solid rgba(139, 92, 246, 0.3);
-      background:
-        radial-gradient(circle at center, rgba(117, 58, 255, 0.15), transparent 55%),
-        rgba(255,255,255,0.025);
-    }
-
-    .solana h2 {
-      font-size: clamp(2rem, 5vw, 4rem);
-      margin-bottom: 20px;
-    }
-
-    .solana h2 span {
-      background: linear-gradient(90deg, #00ffa3, #03e1ff, #dc1fff);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .solana p {
-      max-width: 680px;
-      margin: auto;
-      color: #9aa6bc;
-      line-height: 1.8;
-    }
-
-    /* COMMUNITY */
-
-    .community {
-      text-align: center;
-    }
-
-    .community h2 {
-      font-size: clamp(2.3rem, 6vw, 5rem);
-      margin-bottom: 20px;
-    }
-
-    .community p {
-      max-width: 700px;
-      margin: auto;
-      color: #919db3;
-      line-height: 1.8;
-    }
-
-    /* DISCLAIMER */
-
-    .disclaimer {
-      max-width: 950px;
-      margin: 0 auto 70px;
-      padding: 22px;
-      color: #78849b;
-      font-size: 0.82rem;
-      line-height: 1.7;
-      text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-
-    footer {
-      padding: 35px 20px;
-      text-align: center;
-      color: #626e85;
-      border-top: 1px solid rgba(255,255,255,0.06);
-    }
-
-    footer strong {
-      color: #c9d3e5;
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 900px) {
-      .grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .token-bar {
-        margin-left: 20px;
-        margin-right: 20px;
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .nav-links {
-        display: none;
-      }
-    }
-
-    @media (max-width: 560px) {
-      nav {
-        padding: 16px 20px;
-      }
-
-      h1 {
-        letter-spacing: -2px;
-      }
-
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .token-bar {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      section {
-        padding: 70px 20px;
-      }
-
-      .subtitle {
-        letter-spacing: 2px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NXW | NEXUS CORE AI WORLD</title>
+
+<meta name="description"
+content="NXW is the community memecoin of the NEXUS CORE AI GLOBAL ecosystem, connecting AI, Web3, gaming and a global community.">
+
+<meta name="theme-color" content="#050713">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:
+    radial-gradient(circle at 50% 5%,rgba(0,238,255,.16),transparent 25%),
+    radial-gradient(circle at 80% 20%,rgba(178,0,255,.14),transparent 25%),
+    #03040b;
+  color:white;
+  overflow-x:hidden;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+.container{
+  width:min(1180px,92%);
+  margin:auto;
+}
+
+/* NAV */
+
+nav{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  backdrop-filter:blur(18px);
+  background:rgba(3,4,11,.78);
+  border-bottom:1px solid rgba(0,238,255,.12);
+}
+
+.nav-inner{
+  min-height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.brand{
+  font-weight:1000;
+  letter-spacing:2px;
+}
+
+.brand span{
+  color:#20e9ff;
+}
+
+.nav-links{
+  display:flex;
+  gap:26px;
+  color:#9ba8bf;
+  font-size:.82rem;
+  font-weight:800;
+}
+
+.nav-links a:hover{
+  color:#20e9ff;
+}
+
+/* HERO */
+
+.hero{
+  min-height:780px;
+  display:flex;
+  align-items:center;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero:before{
+  content:"";
+  position:absolute;
+  width:700px;
+  height:700px;
+  left:50%;
+  top:42%;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:
+    radial-gradient(circle,
+      rgba(0,238,255,.18),
+      rgba(109,46,255,.08) 40%,
+      transparent 70%);
+  filter:blur(15px);
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  width:100%;
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:9px 16px;
+  border:1px solid rgba(0,238,255,.3);
+  border-radius:100px;
+  color:#62f2ff;
+  background:rgba(0,238,255,.05);
+  font-size:.75rem;
+  letter-spacing:2px;
+  font-weight:900;
+}
+
+.coin{
+  width:190px;
+  height:190px;
+  margin:32px auto 20px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:3.7rem;
+  font-weight:1000;
+  letter-spacing:-4px;
+  background:
+    radial-gradient(circle at 35% 30%,#ffffff,#42dfff 15%,#6245ff 42%,#160a38 72%);
+  border:4px solid rgba(255,255,255,.22);
+  box-shadow:
+    0 0 35px rgba(0,238,255,.38),
+    0 0 90px rgba(115,55,255,.28);
+}
+
+.hero h1{
+  font-size:clamp(4rem,11vw,8rem);
+  line-height:.9;
+  letter-spacing:-6px;
+  background:linear-gradient(90deg,#00efff,#ffffff,#a86cff,#ff39dc);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.hero h2{
+  margin-top:16px;
+  font-size:clamp(1.2rem,3vw,2rem);
+  letter-spacing:6px;
+}
+
+.hero-text{
+  max-width:760px;
+  margin:25px auto 0;
+  color:#9aa7bd;
+  font-size:1.05rem;
+  line-height:1.8;
+}
+
+.actions{
+  margin-top:35px;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:14px;
+}
+
+.btn{
+  display:inline-block;
+  padding:15px 25px;
+  border-radius:12px;
+  font-weight:900;
+  font-size:.88rem;
+  transition:.25s;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+}
+
+.primary{
+  color:#02040a;
+  background:linear-gradient(90deg,#00efff,#8d5cff);
+  box-shadow:0 10px 40px rgba(0,238,255,.15);
+}
+
+.secondary{
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.04);
+}
+
+/* TOKEN INFO */
+
+.token-panel{
+  position:relative;
+  z-index:10;
+  margin-top:-65px;
+}
+
+.token-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:22px;
+  overflow:hidden;
+  background:rgba(8,10,24,.88);
+  backdrop-filter:blur(18px);
+}
+
+.token-stat{
+  padding:27px 18px;
+  text-align:center;
+  border-right:1px solid rgba(255,255,255,.08);
+}
+
+.token-stat:last-child{
+  border-right:0;
+}
+
+.token-stat small{
+  color:#68758e;
+  display:block;
+  margin-bottom:9px;
+  font-size:.7rem;
+  letter-spacing:2px;
+}
+
+.token-stat strong{
+  font-size:1.05rem;
+}
+
+/* CONTRACT */
+
+.contract{
+  margin:25px auto 0;
+  padding:18px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  border:1px solid rgba(0,238,255,.16);
+  background:rgba(0,238,255,.035);
+  border-radius:15px;
+}
+
+.contract-label{
+  color:#6c7890;
+  font-size:.7rem;
+  letter-spacing:2px;
+}
+
+.contract-address{
+  margin-top:5px;
+  color:#52efff;
+  font-family:monospace;
+  font-weight:800;
+}
+
+/* SECTIONS */
+
+section{
+  padding:110px 0;
+}
+
+.section-head{
+  text-align:center;
+  max-width:720px;
+  margin:0 auto 55px;
+}
+
+.eyebrow{
+  color:#35eaff;
+  font-size:.75rem;
+  letter-spacing:4px;
+  font-weight:900;
+}
+
+.section-head h2{
+  margin-top:13px;
+  font-size:clamp(2.2rem,5vw,4rem);
+}
+
+.section-head p{
+  color:#8996ad;
+  line-height:1.8;
+  margin-top:18px;
+}
+
+/* PILLARS */
+
+.pillars{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.card{
+  padding:32px 25px;
+  min-height:270px;
+  border-radius:22px;
+  border:1px solid rgba(255,255,255,.09);
+  background:
+    linear-gradient(145deg,
+      rgba(255,255,255,.065),
+      rgba(255,255,255,.018));
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-7px);
+  border-color:rgba(0,238,255,.35);
+  box-shadow:0 20px 60px rgba(0,238,255,.07);
+}
+
+.card-icon{
+  font-size:2.4rem;
+  margin-bottom:25px;
+}
+
+.card h3{
+  font-size:1.05rem;
+  margin-bottom:14px;
+}
+
+.card p{
+  color:#8490a7;
+  line-height:1.7;
+  font-size:.92rem;
+}
+
+/* TOKENOMICS */
+
+.crypto-box{
+  border-radius:28px;
+  padding:50px;
+  border:1px solid rgba(137,92,255,.25);
+  background:
+    radial-gradient(circle at 50% 0%,rgba(110,54,255,.13),transparent 50%),
+    rgba(255,255,255,.025);
+}
+
+.crypto-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:50px;
+  align-items:center;
+}
+
+.crypto-box h2{
+  font-size:clamp(2rem,5vw,3.8rem);
+}
+
+.crypto-box p{
+  color:#909cb2;
+  line-height:1.8;
+  margin-top:20px;
+}
+
+.token-details{
+  display:grid;
+  gap:12px;
+}
+
+.detail{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  padding:17px 18px;
+  border-radius:12px;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.07);
+}
+
+.detail span{
+  color:#77849c;
+}
+
+.detail strong{
+  color:#e7edff;
+}
+
+/* HOW TO BUY */
+
+.steps{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.step{
+  padding:28px;
+  border-left:2px solid #21eaff;
+  background:rgba(255,255,255,.025);
+}
+
+.step-number{
+  color:#21eaff;
+  font-size:.75rem;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+.step h3{
+  margin:12px 0;
+}
+
+.step p{
+  color:#7e8aa1;
+  line-height:1.6;
+  font-size:.9rem;
+}
+
+/* COMMUNITY */
+
+.community{
+  text-align:center;
+}
+
+.community h2{
+  font-size:clamp(2.5rem,7vw,5.8rem);
+  line-height:1;
+}
+
+.community p{
+  max-width:650px;
+  margin:25px auto;
+  color:#8b97ae;
+  line-height:1.8;
+}
+
+/* DISCLAIMER */
+
+.disclaimer{
+  max-width:950px;
+  margin:0 auto 70px;
+  padding:25px;
+  text-align:center;
+  color:#6f7b92;
+  font-size:.8rem;
+  line-height:1.7;
+  border-top:1px solid rgba(255,255,255,.07);
+}
+
+footer{
+  border-top:1px solid rgba(255,255,255,.06);
+  padding:40px 20px;
+  text-align:center;
+  color:#5e6a80;
+  line-height:1.8;
+}
+
+footer strong{
+  color:#cbd4e6;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+  .nav-links{
+    display:none;
+  }
+
+  .token-grid,
+  .pillars,
+  .steps{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .crypto-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:560px){
+
+  .hero{
+    min-height:720px;
+  }
+
+  .hero h1{
+    letter-spacing:-3px;
+  }
+
+  .coin{
+    width:145px;
+    height:145px;
+    font-size:2.8rem;
+  }
+
+  .token-grid,
+  .pillars,
+  .steps{
+    grid-template-columns:1fr;
+  }
+
+  .token-stat{
+    border-right:0;
+    border-bottom:1px solid rgba(255,255,255,.07);
+  }
+
+  .contract{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .crypto-box{
+    padding:30px 22px;
+  }
+
+  section{
+    padding:80px 0;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <div class="stars"></div>
+<nav>
+  <div class="container nav-inner">
 
-  <nav>
     <div class="brand">
       NEXUS CORE AI <span>WORLD</span>
     </div>
 
     <div class="nav-links">
       <a href="#about">ABOUT</a>
+      <a href="#token">TOKEN</a>
       <a href="#ecosystem">ECOSYSTEM</a>
-      <a href="#solana">SOLANA</a>
+      <a href="#buy">HOW TO BUY</a>
       <a href="#community">COMMUNITY</a>
     </div>
-  </nav>
 
-  <main>
+  </div>
+</nav>
 
-    <section class="hero" id="about">
-      <div class="hero-inner">
+<header class="hero" id="about">
 
-        <div class="badge">
-          AI • COMMUNITY • WEB3
-        </div>
+  <div class="container hero-content">
 
-        <h1>NXW</h1>
+    <div class="badge">
+      ● SOLANA • WEB3 • COMMUNITY
+    </div>
 
-        <div class="subtitle">
-          NEXUS CORE AI WORLD
-        </div>
+    <div class="coin">
+      NXW
+    </div>
 
-        <p>
-          NXW is the community memecoin of the NEXUS CORE AI GLOBAL ecosystem,
-          connecting artificial intelligence, Web3, technology and a global
-          community.
-        </p>
+    <h1>NXW</h1>
 
-        <div class="buttons">
-          <a
-            class="btn btn-primary"
-            href="https://x.com/NexusCoreAIW"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            JOIN THE COMMUNITY
-          </a>
+    <h2>NEXUS CORE AI WORLD</h2>
 
-          <a
-            class="btn btn-secondary"
-            href="#ecosystem"
-          >
-            EXPLORE NXW
-          </a>
-        </div>
+    <p class="hero-text">
+      The community memecoin of the NEXUS CORE AI GLOBAL ecosystem,
+      connecting artificial intelligence, Web3, gaming, technology
+      and a global community.
+    </p>
 
-      </div>
-    </section>
+    <div class="actions">
 
-    <div class="token-bar">
+      <a class="btn primary"
+         href="https://x.com/NexusCoreAIW"
+         target="_blank"
+         rel="noopener noreferrer">
+         JOIN COMMUNITY
+      </a>
 
-      <div class="token-item">
-        <small>TICKER</small>
-        <strong>NXW</strong>
-      </div>
-
-      <div class="token-item">
-        <small>NETWORK</small>
-        <strong>SOLANA</strong>
-      </div>
-
-      <div class="token-item">
-        <small>TYPE</small>
-        <strong>COMMUNITY</strong>
-      </div>
-
-      <div class="token-item">
-        <small>ECOSYSTEM</small>
-        <strong>NEXUS CORE AI</strong>
-      </div>
+      <a class="btn secondary"
+         href="#token">
+         EXPLORE NXW
+      </a>
 
     </div>
 
-    <section id="ecosystem">
+  </div>
 
-      <div class="section-title">
-        <small>ONE COMMUNITY • ONE WORLD</small>
+</header>
 
-        <h2>The NXW Ecosystem</h2>
+<div class="container token-panel" id="token">
 
-        <p>
-          A global community initiative connecting people, AI,
-          decentralized technology, digital experiences and the future
-          of the NEXUS CORE AI GLOBAL ecosystem.
-        </p>
+  <div class="token-grid">
+
+    <div class="token-stat">
+      <small>TICKER</small>
+      <strong>NXW</strong>
+    </div>
+
+    <div class="token-stat">
+      <small>NETWORK</small>
+      <strong>SOLANA</strong>
+    </div>
+
+    <div class="token-stat">
+      <small>TYPE</small>
+      <strong>COMMUNITY MEMECOIN</strong>
+    </div>
+
+    <div class="token-stat">
+      <small>STATUS</small>
+      <strong>PRE-LAUNCH</strong>
+    </div>
+
+  </div>
+
+  <div class="contract">
+
+    <div>
+      <div class="contract-label">
+        OFFICIAL CONTRACT ADDRESS
       </div>
 
-      <div class="grid">
-
-        <article class="card">
-          <div class="icon">🌎</div>
-          <h3>GLOBAL COMMUNITY</h3>
-          <p>
-            Connecting people around the world through a shared
-            technology-driven community.
-          </p>
-        </article>
-
-        <article class="card">
-          <div class="icon">🔗</div>
-          <h3>WEB3 ECOSYSTEM</h3>
-          <p>
-            Building community experiences around blockchain,
-            digital ownership and decentralized technologies.
-          </p>
-        </article>
-
-        <article class="card">
-          <div class="icon">🎮</div>
-          <h3>GAMING & METAVERSE</h3>
-          <p>
-            Exploring the convergence of games, virtual worlds,
-            digital communities and intelligent experiences.
-          </p>
-        </article>
-
-        <article class="card">
-          <div class="icon">📈</div>
-          <h3>GROW TOGETHER</h3>
-          <p>
-            NXW represents a community designed around participation,
-            creativity, collaboration and global growth.
-          </p>
-        </article>
-
+      <div class="contract-address">
+        AVAILABLE AFTER OFFICIAL LAUNCH
       </div>
-    </section>
+    </div>
 
-    <section id="solana">
+    <div class="badge">
+      VERIFY BEFORE YOU TRADE
+    </div>
 
-      <div class="solana">
+  </div>
 
-        <div class="badge">
-          BLOCKCHAIN
-        </div>
+</div>
 
-        <h2>
-          Built on <span>SOLANA</span>
-        </h2>
+<section id="ecosystem">
 
-        <p>
-          NXW is designed for the Solana ecosystem, combining a global
-          community vision with fast blockchain infrastructure and Web3
-          connectivity.
-        </p>
+  <div class="container">
 
-      </div>
+    <div class="section-head">
 
-    </section>
-
-    <section class="community" id="community">
-
-      <div class="badge">
-        FROM COMMUNITY TO A GLOBAL MOVEMENT
+      <div class="eyebrow">
+        NXW ECOSYSTEM
       </div>
 
       <h2>
-        Welcome to the<br />
-        NXW Community.
+        More Than a Meme.
+        A Global Community.
       </h2>
 
       <p>
-        AI. Community. Web3. Gaming. Technology.
-        One global ecosystem bringing people together.
+        NXW brings together community, blockchain,
+        gaming and emerging technology inside the
+        NEXUS CORE AI GLOBAL ecosystem.
       </p>
 
-      <div class="buttons">
+    </div>
 
-        <a
-          class="btn btn-primary"
-          href="https://x.com/NexusCoreAIW"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          FOLLOW NXW ON X
-        </a>
+    <div class="pillars">
+
+      <div class="card">
+        <div class="card-icon">🌎</div>
+        <h3>GLOBAL COMMUNITY</h3>
+        <p>
+          A worldwide community connected by technology,
+          creativity and a shared digital ecosystem.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🔗</div>
+        <h3>WEB3 ECOSYSTEM</h3>
+        <p>
+          Built around blockchain connectivity,
+          digital ownership and decentralized experiences.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🎮</div>
+        <h3>GAMING & METAVERSE</h3>
+        <p>
+          Connecting digital communities with games,
+          virtual worlds and interactive experiences.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🚀</div>
+        <h3>GROW TOGETHER</h3>
+        <p>
+          Community participation, creativity and
+          collaboration at the center of NXW.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section>
+
+  <div class="container crypto-box">
+
+    <div class="crypto-grid">
+
+      <div>
+
+        <div class="eyebrow">
+          TOKEN INFORMATION
+        </div>
+
+        <h2>
+          NXW on Solana
+        </h2>
+
+        <p>
+          NXW is being launched on the Solana blockchain.
+          Official token information and the verified contract
+          address will be published here after launch.
+        </p>
 
       </div>
 
-    </section>
+      <div class="token-details">
 
-    <div class="disclaimer">
-      NXW is a community memecoin associated with the NEXUS CORE AI GLOBAL
-      ecosystem. Digital assets involve risk and may experience significant
-      price volatility. Nothing on this website constitutes financial,
-      investment or trading advice.
+        <div class="detail">
+          <span>Token</span>
+          <strong>NEXUS CORE AI WORLD</strong>
+        </div>
+
+        <div class="detail">
+          <span>Symbol</span>
+          <strong>NXW</strong>
+        </div>
+
+        <div class="detail">
+          <span>Blockchain</span>
+          <strong>Solana</strong>
+        </div>
+
+        <div class="detail">
+          <span>Contract</span>
+          <strong>COMING SOON</strong>
+        </div>
+
+      </div>
+
     </div>
 
-  </main>
+  </div>
 
-  <footer>
-    <strong>NEXUS CORE AI WORLD</strong><br /><br />
-    NXW • AI • COMMUNITY • WEB3<br /><br />
-    © 2026 NEXUS CORE AI WORLD
-  </footer>
+</section>
+
+<section id="buy">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div class="eyebrow">
+        NXW
+      </div>
+
+      <h2>
+        How to Get NXW
+      </h2>
+
+      <p>
+        Trading instructions will become active after
+        the official NXW launch and publication of the
+        verified contract address.
+      </p>
+
+    </div>
+
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-number">STEP 01</div>
+        <h3>Get a Wallet</h3>
+        <p>
+          Use a Solana-compatible wallet that you control.
+        </p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">STEP 02</div>
+        <h3>Get SOL</h3>
+        <p>
+          SOL is used for network transactions on Solana.
+        </p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">STEP 03</div>
+        <h3>Verify NXW</h3>
+        <p>
+          Always confirm the official NXW contract
+          address from this website.
+        </p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">STEP 04</div>
+        <h3>NXW</h3>
+        <p>
+          Official trading links will be published
+          after launch.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="community" id="community">
+
+  <div class="container">
+
+    <div class="badge">
+      FROM COMMUNITY TO A GLOBAL MOVEMENT
+    </div>
+
+    <h2>
+      Welcome to<br>
+      NXW.
+    </h2>
+
+    <p>
+      AI • COMMUNITY • WEB3 • GAMING • TECHNOLOGY
+      <br>
+      One community. One ecosystem. One world.
+    </p>
+
+    <div class="actions">
+
+      <a class="btn primary"
+         href="https://x.com/NexusCoreAIW"
+         target="_blank"
+         rel="noopener noreferrer">
+         FOLLOW NXW ON X
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+<div class="disclaimer">
+
+  NXW is a community memecoin associated with the
+  NEXUS CORE AI GLOBAL ecosystem. Digital assets may
+  experience substantial price volatility and involve risk.
+  Nothing on this website constitutes financial,
+  investment or trading advice. Always verify official
+  links and the official contract address before interacting
+  with any digital asset.
+
+</div>
+
+<footer>
+
+  <strong>NEXUS CORE AI WORLD</strong>
+
+  <br>
+
+  NXW • AI • COMMUNITY • WEB3
+
+  <br><br>
+
+  © 2026 NEXUS CORE AI WORLD
+
+</footer>
 
 </body>
 </html>
