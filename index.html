@@ -288,7 +288,34 @@ nav{
   font-family:monospace;
   font-weight:800;
 }
+/* OFFICIAL NXW BANNER */
 
+.official-banner{
+  padding:70px 0 20px;
+}
+
+.official-banner img{
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:3 / 1;
+  object-fit:cover;
+  border-radius:24px;
+  border:1px solid rgba(0,238,255,.18);
+  box-shadow:
+    0 0 30px rgba(0,238,255,.08),
+    0 25px 80px rgba(100,40,255,.12);
+}
+
+@media(max-width:560px){
+  .official-banner{
+    padding:45px 0 10px;
+  }
+
+  .official-banner img{
+    border-radius:15px;
+  }
+}
 /* SECTIONS */
 
 section{
@@ -655,7 +682,14 @@ footer strong{
   </div>
 
 </div>
-
+<div class="official-banner">
+  <div class="container">
+    <img
+      src="nxw-banner.png"
+      alt="NEXUS CORE AI WORLD - NXW Official Banner"
+    >
+  </div>
+</div>
 <section id="ecosystem">
 
   <div class="container">
