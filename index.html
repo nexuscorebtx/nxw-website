@@ -648,9 +648,12 @@ body::after{
 }
 
 @media (prefers-reduced-motion: reduce){
-  body::before,
+  body::before{
+    animation:nxwStars 35s linear infinite;
+  }
+
   body::after{
-    animation:none;
+    animation:nxwNebula 14s ease-in-out infinite alternate;
   }
 }
 
