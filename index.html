@@ -656,11 +656,81 @@ body::after{
     animation:nxwNebula 14s ease-in-out infinite alternate;
   }
 }
+/* ===== NXW FLOATING MONEY ===== */
 
+.nxw-money-bg{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  overflow:hidden;
+}
+
+.nxw-money-bg span{
+  position:absolute;
+  bottom:-80px;
+  font-family:Arial,sans-serif;
+  font-weight:900;
+  font-size:24px;
+  color:#00eeff;
+  opacity:.16;
+  text-shadow:
+    0 0 10px rgba(0,238,255,.8),
+    0 0 25px rgba(139,92,255,.5);
+  animation:nxwMoneyFloat 16s linear infinite;
+}
+
+.nxw-money-bg span:nth-child(1){left:7%; animation-delay:0s;}
+.nxw-money-bg span:nth-child(2){left:18%; animation-delay:-5s; font-size:17px;}
+.nxw-money-bg span:nth-child(3){left:31%; animation-delay:-9s; color:#a86cff;}
+.nxw-money-bg span:nth-child(4){left:44%; animation-delay:-3s; font-size:19px;}
+.nxw-money-bg span:nth-child(5){left:59%; animation-delay:-12s; color:#a86cff;}
+.nxw-money-bg span:nth-child(6){left:72%; animation-delay:-7s; font-size:18px;}
+.nxw-money-bg span:nth-child(7){left:84%; animation-delay:-14s;}
+.nxw-money-bg span:nth-child(8){left:94%; animation-delay:-4s; font-size:16px;}
+
+@keyframes nxwMoneyFloat{
+  0%{
+    transform:translateY(0) rotate(0deg);
+    opacity:0;
+  }
+
+  15%{
+    opacity:.16;
+  }
+
+  85%{
+    opacity:.16;
+  }
+
+  100%{
+    transform:translateY(-120vh) rotate(25deg);
+    opacity:0;
+  }
+}
+
+nav,
+header,
+section,
+footer,
+.official-banner{
+  position:relative;
+  z-index:2;
+}
 </style>
 </head>
 
 <body>
+  <div class="nxw-money-bg" aria-hidden="true">
+  <span>$</span>
+  <span>$</span>
+  <span>$</span>
+  <span>$</span>
+  <span>$</span>
+  <span>$</span>
+  <span>$</span>
+  <span>$</span>
+</div>
 <nav>
   <div class="container nav-inner">
 
