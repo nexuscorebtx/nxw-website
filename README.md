@@ -1,2 +1,2 @@
 # nxw-website
-Official website of NEXUS CORE AI WORLD (NXW)
+Official website of NEXUS CORE AI GLOBAL ECOSYSTEM
