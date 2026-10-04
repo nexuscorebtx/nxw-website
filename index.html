@@ -1021,10 +1021,124 @@ footer,
   position:relative;
   z-index:2;
 }
+
+/* ===== NXW NAV FIT FIX ===== */
+@media (min-width:1001px){
+  .nav-inner{gap:14px;padding-left:22px;padding-right:18px;}
+  .brand{flex-basis:300px;padding-right:18px;}
+  .nav-right{justify-content:flex-start;gap:12px;}
+  .nav-links{
+    flex:0 1 auto;
+    justify-content:flex-start;
+    gap:0;
+    margin-right:auto;
+  }
+  .nav-links a{padding-left:10px;padding-right:10px;gap:6px;}
+  .lang-switcher{gap:4px;padding-left:12px;}
+  .lang-btn{min-width:45px;padding-left:5px;padding-right:5px;}
+}
+@media (min-width:1001px) and (max-width:1450px){
+  .brand{flex-basis:245px;}
+  .brand img{width:215px;}
+  .nav-links a{font-size:11px;padding-left:6px;padding-right:6px;}
+  .nav-links a::before{font-size:1.12rem;min-width:19px;}
+  .lang-btn{min-width:38px;font-size:1.25rem;}
+}
+/* ===== END NXW NAV FIT FIX ===== */
+
+/* ===== NEXUS SENTINEL CONTENT PROTECTION ===== */
+body.nxw-protected,
+body.nxw-protected *:not(input):not(textarea){
+  -webkit-user-select:none;
+  user-select:none;
+}
+body.nxw-protected img{
+  -webkit-user-drag:none;
+  user-drag:none;
+}
+.contract-address,
+.contract-address *{
+  -webkit-user-select:text !important;
+  user-select:text !important;
+}
+
+#nexus-sentinel{
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(0,3,12,.72);
+  backdrop-filter:blur(9px);
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .2s ease,visibility .2s ease;
+}
+#nexus-sentinel.show{opacity:1;visibility:visible;}
+.sentinel-card{
+  position:relative;
+  width:min(520px,94vw);
+  overflow:hidden;
+  padding:32px 28px 26px;
+  text-align:center;
+  border:1px solid rgba(0,238,255,.75);
+  border-radius:24px;
+  background:
+    radial-gradient(circle at 20% 0%,rgba(0,238,255,.15),transparent 38%),
+    radial-gradient(circle at 90% 100%,rgba(255,0,220,.13),transparent 42%),
+    rgba(3,7,22,.97);
+  box-shadow:0 0 35px rgba(0,238,255,.18),0 0 55px rgba(150,50,255,.14);
+}
+.sentinel-card::after{
+  content:"";
+  position:absolute;
+  left:0;right:0;
+  height:2px;
+  top:-4px;
+  background:linear-gradient(90deg,transparent,#00efff,#ff39dc,transparent);
+  box-shadow:0 0 14px #00efff;
+  animation:sentinelScan 1.35s linear infinite;
+}
+@keyframes sentinelScan{to{top:calc(100% + 4px)}}
+.sentinel-shield{font-size:2.5rem;filter:drop-shadow(0 0 12px rgba(0,238,255,.7));}
+.sentinel-title{margin-top:10px;font-size:1.15rem;font-weight:1000;letter-spacing:2px;color:#63f3ff;}
+.sentinel-alert{margin-top:10px;font-size:1.4rem;font-weight:1000;color:#fff;}
+.sentinel-message{margin:14px auto 0;max-width:420px;color:#a8b5ca;line-height:1.65;}
+.sentinel-meta{
+  margin-top:18px;
+  padding:13px 15px;
+  border:1px solid rgba(0,238,255,.16);
+  border-radius:12px;
+  background:rgba(0,238,255,.035);
+  color:#75eaff;
+  font-family:monospace;
+  font-size:.78rem;
+  line-height:1.7;
+}
+.sentinel-foot{margin-top:17px;color:#77859e;font-size:.68rem;font-weight:900;letter-spacing:1.5px;}
+/* ===== END NEXUS SENTINEL ===== */
+
 </style>
 </head>
 
-<body>
+<body class="nxw-protected">
+
+<div id="nexus-sentinel" role="dialog" aria-modal="true" aria-live="assertive" aria-hidden="true">
+  <div class="sentinel-card">
+    <div class="sentinel-shield">🛡️</div>
+    <div class="sentinel-title">NEXUS SENTINEL</div>
+    <div class="sentinel-alert" id="sentinel-alert">TENTATIVA DE CÓPIA BLOQUEADA</div>
+    <div class="sentinel-message" id="sentinel-message">Conteúdo digital protegido pela NEXUS CORE AI GLOBAL.</div>
+    <div class="sentinel-meta">
+      <div id="sentinel-session">SESSION: NX-000000</div>
+      <div id="sentinel-network">NETWORK: PROTECTED</div>
+    </div>
+    <div class="sentinel-foot">NEXUS CORE AI GLOBAL • DIGITAL PROTECTION</div>
+  </div>
+</div>
+
   <div class="nxw-money-bg" aria-hidden="true">
   <span>$</span>
   <span>$</span>
@@ -1507,5 +1621,78 @@ applyLanguage=function(lang){
 };
 applyLanguage(localStorage.getItem("nxw-language")||"pt");
 </script>
+
+<script>
+/* ===== NEXUS SENTINEL =====
+   Front-end deterrent against casual copying. It does not make public
+   web content impossible to retrieve. No GPS or hidden IP lookup is used.
+*/
+(() => {
+  const modal = document.getElementById("nexus-sentinel");
+  if (!modal) return;
+
+  const messages = {
+    pt:["TENTATIVA DE CÓPIA BLOQUEADA","Conteúdo digital protegido pela NEXUS CORE AI GLOBAL."],
+    en:["COPY ATTEMPT BLOCKED","Digital content protected by NEXUS CORE AI GLOBAL."],
+    ja:["コピー操作をブロックしました","NEXUS CORE AI GLOBAL により保護されたデジタルコンテンツです。"],
+    ko:["복사 시도가 차단되었습니다","NEXUS CORE AI GLOBAL이 보호하는 디지털 콘텐츠입니다."],
+    ar:["تم حظر محاولة النسخ","محتوى رقمي محمي بواسطة NEXUS CORE AI GLOBAL."]
+  };
+
+  const session = "NX-" + crypto.getRandomValues(new Uint32Array(1))[0]
+    .toString(16).toUpperCase().padStart(8,"0").slice(0,8);
+  document.getElementById("sentinel-session").textContent = "SESSION: " + session;
+
+  let hideTimer;
+  function showSentinel(){
+    const lang = localStorage.getItem("nxw-language") || document.documentElement.lang || "pt";
+    const m = messages[lang] || messages.pt;
+    document.getElementById("sentinel-alert").textContent = m[0];
+    document.getElementById("sentinel-message").textContent = m[1];
+    modal.classList.add("show");
+    modal.setAttribute("aria-hidden","false");
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(() => {
+      modal.classList.remove("show");
+      modal.setAttribute("aria-hidden","true");
+    }, 2300);
+  }
+
+  const isCopyAllowed = target => !!target.closest(".contract-address,input,textarea,[contenteditable='true']");
+
+  document.addEventListener("contextmenu", e => {
+    if (isCopyAllowed(e.target)) return;
+    e.preventDefault(); showSentinel();
+  });
+
+  document.addEventListener("copy", e => {
+    if (isCopyAllowed(e.target)) return;
+    e.preventDefault(); showSentinel();
+  });
+
+  document.addEventListener("cut", e => {
+    if (isCopyAllowed(e.target)) return;
+    e.preventDefault(); showSentinel();
+  });
+
+  document.addEventListener("dragstart", e => {
+    if (e.target.closest("img")) { e.preventDefault(); showSentinel(); }
+  });
+
+  document.addEventListener("keydown", e => {
+    const key = e.key.toLowerCase();
+    const mod = e.ctrlKey || e.metaKey;
+    if (mod && ["c","x","s","u"].includes(key) && !isCopyAllowed(e.target)) {
+      e.preventDefault(); showSentinel();
+    }
+  });
+
+  modal.addEventListener("click", () => {
+    modal.classList.remove("show");
+    modal.setAttribute("aria-hidden","true");
+  });
+})();
+</script>
+
 </body>
 </html>
