@@ -321,6 +321,43 @@ nav{
   }
 }
 
+
+/* ===== NXW FOUNDER / CREATOR ===== */
+.creator-profile{
+  display:grid;
+  grid-template-columns:minmax(280px,390px) 1fr;
+  gap:55px;
+  align-items:center;
+  padding:48px;
+  border:1px solid rgba(0,238,255,.18);
+  border-radius:30px;
+  background:
+    radial-gradient(circle at 12% 20%,rgba(0,238,255,.10),transparent 32%),
+    radial-gradient(circle at 88% 80%,rgba(168,108,255,.12),transparent 34%),
+    rgba(8,10,24,.72);
+  box-shadow:0 25px 80px rgba(0,0,0,.28);
+  overflow:hidden;
+}
+.creator-photo-wrap{position:relative;}
+.creator-photo-wrap::before{
+  content:"";position:absolute;inset:-10px;border-radius:30px;
+  background:linear-gradient(135deg,#00efff,#765cff,#ff39dc);
+  filter:blur(18px);opacity:.30;z-index:0;
+}
+.creator-photo{
+  position:relative;z-index:1;display:block;width:100%;aspect-ratio:4/5;
+  object-fit:cover;object-position:center;border-radius:24px;
+  border:1px solid rgba(255,255,255,.18);
+  box-shadow:0 0 28px rgba(0,238,255,.18),0 0 55px rgba(139,92,255,.16);
+}
+.creator-copy{position:relative;z-index:1;}
+.creator-copy h2{margin-top:12px;font-size:clamp(2.5rem,5vw,4.8rem);line-height:.95;}
+.creator-role{margin-top:14px;color:#55efff;font-weight:900;letter-spacing:1.2px;font-size:.95rem;}
+.creator-bio{margin-top:24px;color:#a1adc1;line-height:1.9;font-size:1rem;}
+.creator-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;}
+.creator-tag{padding:9px 13px;border-radius:999px;border:1px solid rgba(0,238,255,.22);background:rgba(0,238,255,.045);color:#dce7ff;font-size:.72rem;font-weight:900;letter-spacing:1px;}
+@media(max-width:820px){.creator-profile{grid-template-columns:1fr;padding:26px;gap:34px}.creator-photo-wrap{max-width:430px;margin:auto}.creator-copy{text-align:center}.creator-tags{justify-content:center}}
+
 /* ===== END NXW PREMIUM GLOBAL NAV ===== */
 /* HERO */
 
@@ -1123,11 +1160,19 @@ footer,
 </div>
 <section id="creator">
   <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">NXW CREATOR</div>
-      <h2>Memecoin Creator</h2>
-      <p>Creator tools are being prepared for the NEXUS CORE AI memecoin ecosystem.</p>
-      <div class="badge" style="margin-top:20px">COMING SOON</div>
+    <div class="creator-profile">
+      <div class="creator-photo-wrap">
+        <img class="creator-photo" src="marinho-cs-founder.jpg" alt="Marinho CS - Founder & CEO of NEXUS CORE AI GLOBAL">
+      </div>
+      <div class="creator-copy">
+        <div class="eyebrow">FOUNDER • CREATOR</div>
+        <h2>MARINHO CS</h2>
+        <div class="creator-role">Founder & CEO — NEXUS CORE AI GLOBAL • Creator of NXW</div>
+        <p class="creator-bio">Marinho CS is the founder and CEO of NEXUS CORE AI GLOBAL and creator of NEXUS CORE AI WORLD (NXW). A Brazilian entrepreneur based in Japan, he develops projects connecting artificial intelligence, software, Web3, digital communities and emerging technologies. His vision is to build an international technology ecosystem connecting people, AI and digital products across global markets.</p>
+        <div class="creator-tags">
+          <span class="creator-tag">AI</span><span class="creator-tag">WEB3</span><span class="creator-tag">TECHNOLOGY</span><span class="creator-tag">GLOBAL COMMUNITY</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1412,11 +1457,11 @@ footer,
 
 <script>
 const i18n={
-pt:{nav:["INÍCIO","MEMECOINS","CRIADOR","ROADMAP","COMUNIDADE"],badge:"● SOLANA • WEB3 • COMUNIDADE",hero:"A memecoin da comunidade do ecossistema NEXUS CORE AI GLOBAL, conectando inteligência artificial, Web3, jogos, tecnologia e uma comunidade global.",join:"PARTICIPE DA COMUNIDADE",explore:"EXPLORE NXW",stats:["TICKER","REDE","TIPO","STATUS"],type:"MEMECOIN DA COMUNIDADE",status:"PRÉ-LANÇAMENTO",contract:"ENDEREÇO OFICIAL DO CONTRATO",available:"DISPONÍVEL APÓS O LANÇAMENTO OFICIAL",verify:"VERIFIQUE ANTES DE NEGOCIAR",creator:["CRIADOR NXW","Criador da Memecoin","As ferramentas do criador estão sendo preparadas para o ecossistema de memecoins NEXUS CORE AI.","EM BREVE"],eco:["ECOSSISTEMA NXW","Mais que um meme. Uma comunidade global.","NXW reúne comunidade, blockchain, jogos e tecnologia emergente dentro do ecossistema NEXUS CORE AI GLOBAL."],road:["ROADMAP","Construindo o Universo NXW","Comunidade, Web3, jogos e novas experiências com memecoins crescerão passo a passo no ecossistema NEXUS CORE AI GLOBAL."],welcome:["DA COMUNIDADE PARA UM MOVIMENTO GLOBAL","Bem-vindo à","Uma comunidade. Um ecossistema. Um mundo."],follow:["SIGA NXW NO X","SIGA NXW NO TIKTOK"]},
-en:{nav:["HOME","MEMECOINS","CREATOR","ROADMAP","COMMUNITY"],badge:"● SOLANA • WEB3 • COMMUNITY",hero:"The community memecoin of the NEXUS CORE AI GLOBAL ecosystem, connecting artificial intelligence, Web3, gaming, technology and a global community.",join:"JOIN COMMUNITY",explore:"EXPLORE NXW",stats:["TICKER","NETWORK","TYPE","STATUS"],type:"COMMUNITY MEMECOIN",status:"PRE-LAUNCH",contract:"OFFICIAL CONTRACT ADDRESS",available:"AVAILABLE AFTER OFFICIAL LAUNCH",verify:"VERIFY BEFORE YOU TRADE",creator:["NXW CREATOR","Memecoin Creator","Creator tools are being prepared for the NEXUS CORE AI memecoin ecosystem.","COMING SOON"],eco:["NXW ECOSYSTEM","More Than a Meme. A Global Community.","NXW brings together community, blockchain, gaming and emerging technology inside the NEXUS CORE AI GLOBAL ecosystem."],road:["ROADMAP","Building the NXW Universe","Community, Web3, gaming and new memecoin experiences will expand step by step across the NEXUS CORE AI GLOBAL ecosystem."],welcome:["FROM COMMUNITY TO A GLOBAL MOVEMENT","Welcome to","One community. One ecosystem. One world."],follow:["FOLLOW NXW ON X","FOLLOW NXW ON TIKTOK"]},
-ja:{nav:["ホーム","ミームコイン","クリエイター","ロードマップ","コミュニティ"],badge:"● SOLANA • WEB3 • コミュニティ",hero:"NEXUS CORE AI GLOBAL エコシステムのコミュニティ・ミームコイン。AI、Web3、ゲーム、テクノロジー、そして世界のコミュニティをつなぎます。",join:"コミュニティに参加",explore:"NXWを見る",stats:["ティッカー","ネットワーク","タイプ","ステータス"],type:"コミュニティ・ミームコイン",status:"プレローンチ",contract:"公式コントラクトアドレス",available:"正式ローンチ後に公開",verify:"取引前に必ず確認",creator:["NXW クリエイター","ミームコイン・クリエイター","NEXUS CORE AI ミームコイン・エコシステム向けのクリエイターツールを準備中です。","近日公開"],eco:["NXW エコシステム","ミームを超えて。グローバルコミュニティへ。","NXWはNEXUS CORE AI GLOBALの中で、コミュニティ、ブロックチェーン、ゲーム、新しいテクノロジーをつなぎます。"],road:["ロードマップ","NXWユニバースを構築","コミュニティ、Web3、ゲーム、新しいミームコイン体験を段階的に拡大していきます。"],welcome:["コミュニティから世界的ムーブメントへ","NXWへようこそ","ひとつのコミュニティ。ひとつのエコシステム。ひとつの世界。"],follow:["XでNXWをフォロー","TikTokでNXWをフォロー"]},
-ko:{nav:["홈","밈코인","크리에이터","로드맵","커뮤니티"],badge:"● SOLANA • WEB3 • 커뮤니티",hero:"NEXUS CORE AI GLOBAL 생태계의 커뮤니티 밈코인으로 AI, Web3, 게임, 기술과 글로벌 커뮤니티를 연결합니다.",join:"커뮤니티 참여",explore:"NXW 살펴보기",stats:["티커","네트워크","유형","상태"],type:"커뮤니티 밈코인",status:"출시 전",contract:"공식 컨트랙트 주소",available:"공식 출시 후 공개",verify:"거래 전 반드시 확인",creator:["NXW 크리에이터","밈코인 크리에이터","NEXUS CORE AI 밈코인 생태계를 위한 크리에이터 도구를 준비하고 있습니다.","출시 예정"],eco:["NXW 생태계","밈을 넘어, 글로벌 커뮤니티로.","NXW는 NEXUS CORE AI GLOBAL 생태계 안에서 커뮤니티, 블록체인, 게임과 새로운 기술을 연결합니다."],road:["로드맵","NXW 유니버스 구축","커뮤니티, Web3, 게임과 새로운 밈코인 경험을 단계적으로 확장합니다."],welcome:["커뮤니티에서 글로벌 무브먼트로","NXW에 오신 것을 환영합니다","하나의 커뮤니티. 하나의 생태계. 하나의 세계."],follow:["X에서 NXW 팔로우","TikTok에서 NXW 팔로우"]},
-ar:{nav:["الرئيسية","عملات الميم","المنشئ","خارطة الطريق","المجتمع"],badge:"● سولانا • WEB3 • المجتمع",hero:"عملة الميم المجتمعية لمنظومة NEXUS CORE AI GLOBAL، تربط الذكاء الاصطناعي وWeb3 والألعاب والتكنولوجيا بمجتمع عالمي.",join:"انضم إلى المجتمع",explore:"استكشف NXW",stats:["الرمز","الشبكة","النوع","الحالة"],type:"عملة ميم مجتمعية",status:"قبل الإطلاق",contract:"عنوان العقد الرسمي",available:"متاح بعد الإطلاق الرسمي",verify:"تحقق قبل التداول",creator:["منشئ NXW","منشئ عملة الميم","يجري إعداد أدوات المنشئ لمنظومة عملات الميم التابعة لـ NEXUS CORE AI.","قريباً"],eco:["منظومة NXW","أكثر من مجرد ميم. مجتمع عالمي.","تجمع NXW المجتمع والبلوك تشين والألعاب والتكنولوجيا الناشئة ضمن منظومة NEXUS CORE AI GLOBAL."],road:["خارطة الطريق","نبني عالم NXW","سيتوسع المجتمع وWeb3 والألعاب وتجارب عملات الميم الجديدة خطوة بخطوة ضمن منظومة NEXUS CORE AI GLOBAL."],welcome:["من المجتمع إلى حركة عالمية","مرحباً بك في","مجتمع واحد. منظومة واحدة. عالم واحد."],follow:["تابع NXW على X","تابع NXW على TikTok"]}
+pt:{nav:["INÍCIO","MEMECOINS","CRIADOR","ROADMAP","COMUNIDADE"],badge:"● SOLANA • WEB3 • COMUNIDADE",hero:"A memecoin da comunidade do ecossistema NEXUS CORE AI GLOBAL, conectando inteligência artificial, Web3, jogos, tecnologia e uma comunidade global.",join:"PARTICIPE DA COMUNIDADE",explore:"EXPLORE NXW",stats:["TICKER","REDE","TIPO","STATUS"],type:"MEMECOIN DA COMUNIDADE",status:"PRÉ-LANÇAMENTO",contract:"ENDEREÇO OFICIAL DO CONTRATO",available:"DISPONÍVEL APÓS O LANÇAMENTO OFICIAL",verify:"VERIFIQUE ANTES DE NEGOCIAR",creator:["FUNDADOR • CRIADOR","MARINHO CS","Fundador & CEO — NEXUS CORE AI GLOBAL • Criador da NXW","Marinho CS é fundador e CEO da NEXUS CORE AI GLOBAL e criador da NEXUS CORE AI WORLD (NXW). Empreendedor brasileiro baseado no Japão, desenvolve projetos que conectam inteligência artificial, software, Web3, comunidades digitais e novas tecnologias. Sua visão é construir um ecossistema tecnológico internacional capaz de conectar pessoas, IA e produtos digitais em mercados globais."],eco:["ECOSSISTEMA NXW","Mais que um meme. Uma comunidade global.","NXW reúne comunidade, blockchain, jogos e tecnologia emergente dentro do ecossistema NEXUS CORE AI GLOBAL."],road:["ROADMAP","Construindo o Universo NXW","Comunidade, Web3, jogos e novas experiências com memecoins crescerão passo a passo no ecossistema NEXUS CORE AI GLOBAL."],welcome:["DA COMUNIDADE PARA UM MOVIMENTO GLOBAL","Bem-vindo à","Uma comunidade. Um ecossistema. Um mundo."],follow:["SIGA NXW NO X","SIGA NXW NO TIKTOK"]},
+en:{nav:["HOME","MEMECOINS","CREATOR","ROADMAP","COMMUNITY"],badge:"● SOLANA • WEB3 • COMMUNITY",hero:"The community memecoin of the NEXUS CORE AI GLOBAL ecosystem, connecting artificial intelligence, Web3, gaming, technology and a global community.",join:"JOIN COMMUNITY",explore:"EXPLORE NXW",stats:["TICKER","NETWORK","TYPE","STATUS"],type:"COMMUNITY MEMECOIN",status:"PRE-LAUNCH",contract:"OFFICIAL CONTRACT ADDRESS",available:"AVAILABLE AFTER OFFICIAL LAUNCH",verify:"VERIFY BEFORE YOU TRADE",creator:["FOUNDER • CREATOR","MARINHO CS","Founder & CEO — NEXUS CORE AI GLOBAL • Creator of NXW","Marinho CS is the founder and CEO of NEXUS CORE AI GLOBAL and creator of NEXUS CORE AI WORLD (NXW). A Brazilian entrepreneur based in Japan, he develops projects connecting artificial intelligence, software, Web3, digital communities and emerging technologies. His vision is to build an international technology ecosystem connecting people, AI and digital products across global markets."],eco:["NXW ECOSYSTEM","More Than a Meme. A Global Community.","NXW brings together community, blockchain, gaming and emerging technology inside the NEXUS CORE AI GLOBAL ecosystem."],road:["ROADMAP","Building the NXW Universe","Community, Web3, gaming and new memecoin experiences will expand step by step across the NEXUS CORE AI GLOBAL ecosystem."],welcome:["FROM COMMUNITY TO A GLOBAL MOVEMENT","Welcome to","One community. One ecosystem. One world."],follow:["FOLLOW NXW ON X","FOLLOW NXW ON TIKTOK"]},
+ja:{nav:["ホーム","ミームコイン","クリエイター","ロードマップ","コミュニティ"],badge:"● SOLANA • WEB3 • コミュニティ",hero:"NEXUS CORE AI GLOBAL エコシステムのコミュニティ・ミームコイン。AI、Web3、ゲーム、テクノロジー、そして世界のコミュニティをつなぎます。",join:"コミュニティに参加",explore:"NXWを見る",stats:["ティッカー","ネットワーク","タイプ","ステータス"],type:"コミュニティ・ミームコイン",status:"プレローンチ",contract:"公式コントラクトアドレス",available:"正式ローンチ後に公開",verify:"取引前に必ず確認",creator:["創業者 • クリエイター","MARINHO CS","創業者兼CEO — NEXUS CORE AI GLOBAL • NXWクリエイター","Marinho CSはNEXUS CORE AI GLOBALの創業者兼CEOであり、NEXUS CORE AI WORLD（NXW）のクリエイターです。日本を拠点とするブラジル人起業家として、AI、ソフトウェア、Web3、デジタルコミュニティ、新興テクノロジーをつなぐプロジェクトを開発しています。世界の市場で人々、AI、デジタル製品をつなぐ国際的なテクノロジー・エコシステムの構築を目指しています。"],eco:["NXW エコシステム","ミームを超えて。グローバルコミュニティへ。","NXWはNEXUS CORE AI GLOBALの中で、コミュニティ、ブロックチェーン、ゲーム、新しいテクノロジーをつなぎます。"],road:["ロードマップ","NXWユニバースを構築","コミュニティ、Web3、ゲーム、新しいミームコイン体験を段階的に拡大していきます。"],welcome:["コミュニティから世界的ムーブメントへ","NXWへようこそ","ひとつのコミュニティ。ひとつのエコシステム。ひとつの世界。"],follow:["XでNXWをフォロー","TikTokでNXWをフォロー"]},
+ko:{nav:["홈","밈코인","크리에이터","로드맵","커뮤니티"],badge:"● SOLANA • WEB3 • 커뮤니티",hero:"NEXUS CORE AI GLOBAL 생태계의 커뮤니티 밈코인으로 AI, Web3, 게임, 기술과 글로벌 커뮤니티를 연결합니다.",join:"커뮤니티 참여",explore:"NXW 살펴보기",stats:["티커","네트워크","유형","상태"],type:"커뮤니티 밈코인",status:"출시 전",contract:"공식 컨트랙트 주소",available:"공식 출시 후 공개",verify:"거래 전 반드시 확인",creator:["창립자 • 크리에이터","MARINHO CS","Founder & CEO — NEXUS CORE AI GLOBAL • NXW Creator","Marinho CS는 NEXUS CORE AI GLOBAL의 창립자이자 CEO이며 NEXUS CORE AI WORLD(NXW)의 크리에이터입니다. 일본을 기반으로 활동하는 브라질 기업가로서 인공지능, 소프트웨어, Web3, 디지털 커뮤니티 및 신기술을 연결하는 프로젝트를 개발하고 있습니다. 그의 비전은 전 세계 시장에서 사람, AI 및 디지털 제품을 연결하는 국제 기술 생태계를 구축하는 것입니다."],eco:["NXW 생태계","밈을 넘어, 글로벌 커뮤니티로.","NXW는 NEXUS CORE AI GLOBAL 생태계 안에서 커뮤니티, 블록체인, 게임과 새로운 기술을 연결합니다."],road:["로드맵","NXW 유니버스 구축","커뮤니티, Web3, 게임과 새로운 밈코인 경험을 단계적으로 확장합니다."],welcome:["커뮤니티에서 글로벌 무브먼트로","NXW에 오신 것을 환영합니다","하나의 커뮤니티. 하나의 생태계. 하나의 세계."],follow:["X에서 NXW 팔로우","TikTok에서 NXW 팔로우"]},
+ar:{nav:["الرئيسية","عملات الميم","المنشئ","خارطة الطريق","المجتمع"],badge:"● سولانا • WEB3 • المجتمع",hero:"عملة الميم المجتمعية لمنظومة NEXUS CORE AI GLOBAL، تربط الذكاء الاصطناعي وWeb3 والألعاب والتكنولوجيا بمجتمع عالمي.",join:"انضم إلى المجتمع",explore:"استكشف NXW",stats:["الرمز","الشبكة","النوع","الحالة"],type:"عملة ميم مجتمعية",status:"قبل الإطلاق",contract:"عنوان العقد الرسمي",available:"متاح بعد الإطلاق الرسمي",verify:"تحقق قبل التداول",creator:["المؤسس • المنشئ","MARINHO CS","المؤسس والرئيس التنفيذي — NEXUS CORE AI GLOBAL • منشئ NXW","مارينهو سي إس هو مؤسس ورئيس NEXUS CORE AI GLOBAL التنفيذي ومنشئ NEXUS CORE AI WORLD (NXW). وهو رائد أعمال برازيلي مقيم في اليابان، يطوّر مشاريع تربط الذكاء الاصطناعي والبرمجيات وWeb3 والمجتمعات الرقمية والتقنيات الناشئة. تتمثل رؤيته في بناء منظومة تكنولوجية دولية تربط الناس والذكاء الاصطناعي والمنتجات الرقمية عبر الأسواق العالمية."],eco:["منظومة NXW","أكثر من مجرد ميم. مجتمع عالمي.","تجمع NXW المجتمع والبلوك تشين والألعاب والتكنولوجيا الناشئة ضمن منظومة NEXUS CORE AI GLOBAL."],road:["خارطة الطريق","نبني عالم NXW","سيتوسع المجتمع وWeb3 والألعاب وتجارب عملات الميم الجديدة خطوة بخطوة ضمن منظومة NEXUS CORE AI GLOBAL."],welcome:["من المجتمع إلى حركة عالمية","مرحباً بك في","مجتمع واحد. منظومة واحدة. عالم واحد."],follow:["تابع NXW على X","تابع NXW على TikTok"]}
 };
 function applyLanguage(lang){
  const t=i18n[lang]||i18n.pt;
@@ -1432,7 +1477,7 @@ function applyLanguage(lang){
  document.querySelector(".contract-label").textContent=t.contract;
  document.querySelector(".contract-address").textContent=t.available;
  document.querySelector(".contract > .badge").textContent=t.verify;
- const cr=document.querySelector("#creator .section-head"); cr.querySelector(".eyebrow").textContent=t.creator[0]; cr.querySelector("h2").textContent=t.creator[1]; cr.querySelector("p").textContent=t.creator[2]; cr.querySelector(".badge").textContent=t.creator[3];
+ const cr=document.querySelector("#creator .creator-copy"); cr.querySelector(".eyebrow").textContent=t.creator[0]; cr.querySelector("h2").textContent=t.creator[1]; cr.querySelector(".creator-role").textContent=t.creator[2]; cr.querySelector(".creator-bio").textContent=t.creator[3];
  const ec=document.querySelector("#ecosystem .section-head"); ec.querySelector(".eyebrow").textContent=t.eco[0]; ec.querySelector("h2").textContent=t.eco[1]; ec.querySelector("p").textContent=t.eco[2];
  const rd=document.querySelector("#roadmap .section-head"); rd.querySelector(".eyebrow").textContent=t.road[0]; rd.querySelector("h2").textContent=t.road[1]; rd.querySelector("p").textContent=t.road[2];
  const cm=document.querySelector("#community"); cm.querySelector(".badge").textContent=t.welcome[0]; cm.querySelector("h2").innerHTML=t.welcome[1]+"<br>NXW."; const cp=cm.querySelector("p"); cp.innerHTML="AI • COMMUNITY • WEB3 • GAMING • TECHNOLOGY<br>"+t.welcome[2]; const ca=cm.querySelectorAll(".actions .btn"); ca[0].textContent=t.follow[0]; ca[1].textContent=t.follow[1];
