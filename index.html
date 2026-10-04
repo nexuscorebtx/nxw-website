@@ -42,78 +42,191 @@ a{
   margin:auto;
 }
 
-/* NAV */
+/* ===== NXW GLOBAL NAV ===== */
 
 nav{
   position:sticky;
   top:0;
   z-index:1000;
+  padding:10px 12px;
+  background:rgba(2,6,19,.94);
   backdrop-filter:blur(18px);
-  background:rgba(3,4,11,.78);
-  border-bottom:1px solid rgba(0,238,255,.12);
+  border-bottom:1px solid rgba(0,238,255,.20);
 }
 
 .nav-inner{
-  min-height:72px;
+  width:min(1500px,98%);
+  min-height:88px;
+  margin:auto;
+  padding:8px 24px;
+
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:20px;
+  gap:28px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,40,70,.55),
+      rgba(3,7,22,.95),
+      rgba(35,5,55,.55)
+    );
+
+  border:1px solid rgba(0,238,255,.50);
+  border-radius:28px;
+
+  box-shadow:
+    inset 0 0 30px rgba(0,238,255,.05),
+    0 0 20px rgba(0,238,255,.10),
+    0 0 25px rgba(180,0,255,.08);
 }
 
+/* NXW / NEXUS CORE AI WORLD */
+
 .brand{
+  flex-shrink:0;
   font-weight:1000;
   letter-spacing:2px;
+  font-size:18px;
+  color:#fff;
+  padding-right:28px;
+  border-right:1px solid rgba(0,238,255,.30);
 }
 
 .brand span{
   color:#20e9ff;
+  text-shadow:0 0 12px rgba(0,238,255,.45);
 }
+
+/* MENU + LANGUAGES */
 
 .nav-right{
+  flex:1;
   display:flex;
   align-items:center;
-  gap:18px;
+  justify-content:flex-end;
+  gap:28px;
 }
 
-.nav-links{
-  display:flex;
-  gap:26px;
-  color:#9ba8bf;
-  font-size:.82rem;
-  font-weight:800;
-}
+/* LANGUAGE FLAGS */
 
-.nav-links a:hover{
-  color:#20e9ff;
-}
-
-.lang-switcher{
+.langs{
   display:flex;
   align-items:center;
+  justify-content:center;
   gap:7px;
-  padding-left:16px;
-  border-left:1px solid rgba(255,255,255,.12);
+
+  padding-left:22px;
+  border-left:1px solid rgba(0,238,255,.30);
 }
 
 .lang-btn{
+  appearance:none;
   border:1px solid transparent;
   background:transparent;
-  border-radius:8px;
-  padding:5px 6px;
-  font-size:1.15rem;
-  cursor:pointer;
-  transition:.2s;
+  border-radius:10px;
+
+  padding:6px 7px;
+
+  font-size:1.35rem;
   line-height:1;
+  cursor:pointer;
+
+  transition:
+    transform .2s ease,
+    background .2s ease,
+    border-color .2s ease,
+    box-shadow .2s ease;
 }
 
 .lang-btn:hover,
 .lang-btn.active{
-  background:rgba(0,238,255,.08);
-  border-color:rgba(0,238,255,.28);
-  transform:translateY(-1px);
+  background:rgba(0,238,255,.10);
+  border-color:rgba(0,238,255,.45);
+  transform:translateY(-2px);
+
+  box-shadow:
+    0 0 12px rgba(0,238,255,.20),
+    inset 0 0 10px rgba(0,238,255,.05);
 }
 
+/* DESKTOP */
+
+@media(min-width:1001px){
+
+  .nav-inner::after{
+    content:"";
+    position:absolute;
+    pointer-events:none;
+  }
+
+}
+
+/* TABLET / MOBILE */
+
+@media(max-width:1000px){
+
+  nav{
+    padding:8px;
+  }
+
+  .nav-inner{
+    width:100%;
+    min-height:72px;
+    padding:10px 14px;
+    border-radius:20px;
+    gap:14px;
+  }
+
+  .brand{
+    font-size:15px;
+    padding-right:0;
+    border-right:0;
+  }
+
+  .nav-right{
+    gap:10px;
+  }
+
+  .langs{
+    padding-left:0;
+    border-left:0;
+    gap:3px;
+  }
+
+  .lang-btn{
+    font-size:1.15rem;
+    padding:5px;
+  }
+}
+
+/* SMALL MOBILE */
+
+@media(max-width:600px){
+
+  .nav-inner{
+    flex-direction:column;
+    justify-content:center;
+    padding:10px;
+  }
+
+  .brand{
+    text-align:center;
+  }
+
+  .nav-right{
+    width:100%;
+    justify-content:center;
+  }
+
+  .langs{
+    width:100%;
+    justify-content:center;
+  }
+}
+
+/* ===== END NXW GLOBAL NAV ===== */
 /* HERO */
 
 .hero{
