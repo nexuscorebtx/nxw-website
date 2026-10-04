@@ -70,6 +70,12 @@ nav{
   color:#20e9ff;
 }
 
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+
 .nav-links{
   display:flex;
   gap:26px;
@@ -80,6 +86,32 @@ nav{
 
 .nav-links a:hover{
   color:#20e9ff;
+}
+
+.lang-switcher{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  padding-left:16px;
+  border-left:1px solid rgba(255,255,255,.12);
+}
+
+.lang-btn{
+  border:1px solid transparent;
+  background:transparent;
+  border-radius:8px;
+  padding:5px 6px;
+  font-size:1.15rem;
+  cursor:pointer;
+  transition:.2s;
+  line-height:1;
+}
+
+.lang-btn:hover,
+.lang-btn.active{
+  background:rgba(0,238,255,.08);
+  border-color:rgba(0,238,255,.28);
+  transform:translateY(-1px);
 }
 
 /* HERO */
@@ -517,8 +549,27 @@ footer strong{
 
 @media(max-width:900px){
 
+  .nav-inner{
+    min-height:66px;
+  }
+
   .nav-links{
     display:none;
+  }
+
+  .nav-right{
+    margin-left:auto;
+  }
+
+  .lang-switcher{
+    padding-left:0;
+    border-left:0;
+    gap:3px;
+  }
+
+  .lang-btn{
+    padding:5px 4px;
+    font-size:1.05rem;
   }
 
   .token-grid,
@@ -746,12 +797,22 @@ footer,
       NEXUS CORE AI <span>WORLD</span>
     </div>
 
-    <div class="nav-links">
-      <a href="#about">ABOUT</a>
-      <a href="#token">TOKEN</a>
-      <a href="#ecosystem">ECOSYSTEM</a>
-      <a href="#buy">HOW TO BUY</a>
-      <a href="#community">COMMUNITY</a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="#about">HOME</a>
+        <a href="#token">MEMECOINS</a>
+        <a href="#creator">CREATOR</a>
+        <a href="#roadmap">ROADMAP</a>
+        <a href="#community">COMMUNITY</a>
+      </div>
+
+      <div class="lang-switcher" aria-label="Language selector">
+        <button class="lang-btn active" type="button" data-lang="pt" title="Português" aria-label="Português">🇧🇷</button>
+        <button class="lang-btn" type="button" data-lang="en" title="English" aria-label="English">🇺🇸</button>
+        <button class="lang-btn" type="button" data-lang="ja" title="日本語" aria-label="日本語">🇯🇵</button>
+        <button class="lang-btn" type="button" data-lang="ko" title="한국어" aria-label="한국어">🇰🇷</button>
+        <button class="lang-btn" type="button" data-lang="ar" title="العربية — الإمارات" aria-label="العربية — الإمارات">🇦🇪</button>
+      </div>
     </div>
 
   </div>
@@ -852,6 +913,17 @@ footer,
     >
   </div>
 </div>
+<section id="creator">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">NXW CREATOR</div>
+      <h2>Memecoin Creator</h2>
+      <p>Creator tools are being prepared for the NEXUS CORE AI memecoin ecosystem.</p>
+      <div class="badge" style="margin-top:20px">COMING SOON</div>
+    </div>
+  </div>
+</section>
+
 <section id="ecosystem">
 
   <div class="container">
@@ -1041,6 +1113,16 @@ footer,
 
 </section>
 
+<section id="roadmap">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">ROADMAP</div>
+      <h2>Building the NXW Universe</h2>
+      <p>Community, Web3, gaming and new memecoin experiences will expand step by step across the NEXUS CORE AI GLOBAL ecosystem.</p>
+    </div>
+  </div>
+</section>
+
 <section class="community" id="community">
 
   <div class="container">
@@ -1120,5 +1202,19 @@ footer,
 
 </footer>
 
+<script>
+document.querySelectorAll('.lang-btn').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.lang-btn').forEach(function(item){ item.classList.remove('active'); });
+    btn.classList.add('active');
+    document.documentElement.lang = btn.dataset.lang;
+    if(btn.dataset.lang === 'ar'){
+      document.documentElement.dir = 'rtl';
+    }else{
+      document.documentElement.dir = 'ltr';
+    }
+  });
+});
+</script>
 </body>
 </html>
