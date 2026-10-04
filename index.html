@@ -1203,18 +1203,35 @@ footer,
 </footer>
 
 <script>
-document.querySelectorAll('.lang-btn').forEach(function(btn){
-  btn.addEventListener('click', function(){
-    document.querySelectorAll('.lang-btn').forEach(function(item){ item.classList.remove('active'); });
-    btn.classList.add('active');
-    document.documentElement.lang = btn.dataset.lang;
-    if(btn.dataset.lang === 'ar'){
-      document.documentElement.dir = 'rtl';
-    }else{
-      document.documentElement.dir = 'ltr';
-    }
-  });
-});
+const i18n={
+pt:{nav:["INÍCIO","MEMECOINS","CRIADOR","ROADMAP","COMUNIDADE"],badge:"● SOLANA • WEB3 • COMUNIDADE",hero:"A memecoin da comunidade do ecossistema NEXUS CORE AI GLOBAL, conectando inteligência artificial, Web3, jogos, tecnologia e uma comunidade global.",join:"PARTICIPE DA COMUNIDADE",explore:"EXPLORE NXW",stats:["TICKER","REDE","TIPO","STATUS"],type:"MEMECOIN DA COMUNIDADE",status:"PRÉ-LANÇAMENTO",contract:"ENDEREÇO OFICIAL DO CONTRATO",available:"DISPONÍVEL APÓS O LANÇAMENTO OFICIAL",verify:"VERIFIQUE ANTES DE NEGOCIAR",creator:["CRIADOR NXW","Criador da Memecoin","As ferramentas do criador estão sendo preparadas para o ecossistema de memecoins NEXUS CORE AI.","EM BREVE"],eco:["ECOSSISTEMA NXW","Mais que um meme. Uma comunidade global.","NXW reúne comunidade, blockchain, jogos e tecnologia emergente dentro do ecossistema NEXUS CORE AI GLOBAL."],road:["ROADMAP","Construindo o Universo NXW","Comunidade, Web3, jogos e novas experiências com memecoins crescerão passo a passo no ecossistema NEXUS CORE AI GLOBAL."],welcome:["DA COMUNIDADE PARA UM MOVIMENTO GLOBAL","Bem-vindo à","Uma comunidade. Um ecossistema. Um mundo."],follow:["SIGA NXW NO X","SIGA NXW NO TIKTOK"]},
+en:{nav:["HOME","MEMECOINS","CREATOR","ROADMAP","COMMUNITY"],badge:"● SOLANA • WEB3 • COMMUNITY",hero:"The community memecoin of the NEXUS CORE AI GLOBAL ecosystem, connecting artificial intelligence, Web3, gaming, technology and a global community.",join:"JOIN COMMUNITY",explore:"EXPLORE NXW",stats:["TICKER","NETWORK","TYPE","STATUS"],type:"COMMUNITY MEMECOIN",status:"PRE-LAUNCH",contract:"OFFICIAL CONTRACT ADDRESS",available:"AVAILABLE AFTER OFFICIAL LAUNCH",verify:"VERIFY BEFORE YOU TRADE",creator:["NXW CREATOR","Memecoin Creator","Creator tools are being prepared for the NEXUS CORE AI memecoin ecosystem.","COMING SOON"],eco:["NXW ECOSYSTEM","More Than a Meme. A Global Community.","NXW brings together community, blockchain, gaming and emerging technology inside the NEXUS CORE AI GLOBAL ecosystem."],road:["ROADMAP","Building the NXW Universe","Community, Web3, gaming and new memecoin experiences will expand step by step across the NEXUS CORE AI GLOBAL ecosystem."],welcome:["FROM COMMUNITY TO A GLOBAL MOVEMENT","Welcome to","One community. One ecosystem. One world."],follow:["FOLLOW NXW ON X","FOLLOW NXW ON TIKTOK"]},
+ja:{nav:["ホーム","ミームコイン","クリエイター","ロードマップ","コミュニティ"],badge:"● SOLANA • WEB3 • コミュニティ",hero:"NEXUS CORE AI GLOBAL エコシステムのコミュニティ・ミームコイン。AI、Web3、ゲーム、テクノロジー、そして世界のコミュニティをつなぎます。",join:"コミュニティに参加",explore:"NXWを見る",stats:["ティッカー","ネットワーク","タイプ","ステータス"],type:"コミュニティ・ミームコイン",status:"プレローンチ",contract:"公式コントラクトアドレス",available:"正式ローンチ後に公開",verify:"取引前に必ず確認",creator:["NXW クリエイター","ミームコイン・クリエイター","NEXUS CORE AI ミームコイン・エコシステム向けのクリエイターツールを準備中です。","近日公開"],eco:["NXW エコシステム","ミームを超えて。グローバルコミュニティへ。","NXWはNEXUS CORE AI GLOBALの中で、コミュニティ、ブロックチェーン、ゲーム、新しいテクノロジーをつなぎます。"],road:["ロードマップ","NXWユニバースを構築","コミュニティ、Web3、ゲーム、新しいミームコイン体験を段階的に拡大していきます。"],welcome:["コミュニティから世界的ムーブメントへ","NXWへようこそ","ひとつのコミュニティ。ひとつのエコシステム。ひとつの世界。"],follow:["XでNXWをフォロー","TikTokでNXWをフォロー"]},
+ko:{nav:["홈","밈코인","크리에이터","로드맵","커뮤니티"],badge:"● SOLANA • WEB3 • 커뮤니티",hero:"NEXUS CORE AI GLOBAL 생태계의 커뮤니티 밈코인으로 AI, Web3, 게임, 기술과 글로벌 커뮤니티를 연결합니다.",join:"커뮤니티 참여",explore:"NXW 살펴보기",stats:["티커","네트워크","유형","상태"],type:"커뮤니티 밈코인",status:"출시 전",contract:"공식 컨트랙트 주소",available:"공식 출시 후 공개",verify:"거래 전 반드시 확인",creator:["NXW 크리에이터","밈코인 크리에이터","NEXUS CORE AI 밈코인 생태계를 위한 크리에이터 도구를 준비하고 있습니다.","출시 예정"],eco:["NXW 생태계","밈을 넘어, 글로벌 커뮤니티로.","NXW는 NEXUS CORE AI GLOBAL 생태계 안에서 커뮤니티, 블록체인, 게임과 새로운 기술을 연결합니다."],road:["로드맵","NXW 유니버스 구축","커뮤니티, Web3, 게임과 새로운 밈코인 경험을 단계적으로 확장합니다."],welcome:["커뮤니티에서 글로벌 무브먼트로","NXW에 오신 것을 환영합니다","하나의 커뮤니티. 하나의 생태계. 하나의 세계."],follow:["X에서 NXW 팔로우","TikTok에서 NXW 팔로우"]},
+ar:{nav:["الرئيسية","عملات الميم","المنشئ","خارطة الطريق","المجتمع"],badge:"● سولانا • WEB3 • المجتمع",hero:"عملة الميم المجتمعية لمنظومة NEXUS CORE AI GLOBAL، تربط الذكاء الاصطناعي وWeb3 والألعاب والتكنولوجيا بمجتمع عالمي.",join:"انضم إلى المجتمع",explore:"استكشف NXW",stats:["الرمز","الشبكة","النوع","الحالة"],type:"عملة ميم مجتمعية",status:"قبل الإطلاق",contract:"عنوان العقد الرسمي",available:"متاح بعد الإطلاق الرسمي",verify:"تحقق قبل التداول",creator:["منشئ NXW","منشئ عملة الميم","يجري إعداد أدوات المنشئ لمنظومة عملات الميم التابعة لـ NEXUS CORE AI.","قريباً"],eco:["منظومة NXW","أكثر من مجرد ميم. مجتمع عالمي.","تجمع NXW المجتمع والبلوك تشين والألعاب والتكنولوجيا الناشئة ضمن منظومة NEXUS CORE AI GLOBAL."],road:["خارطة الطريق","نبني عالم NXW","سيتوسع المجتمع وWeb3 والألعاب وتجارب عملات الميم الجديدة خطوة بخطوة ضمن منظومة NEXUS CORE AI GLOBAL."],welcome:["من المجتمع إلى حركة عالمية","مرحباً بك في","مجتمع واحد. منظومة واحدة. عالم واحد."],follow:["تابع NXW على X","تابع NXW على TikTok"]}
+};
+function applyLanguage(lang){
+ const t=i18n[lang]||i18n.pt;
+ document.documentElement.lang=lang;
+ document.documentElement.dir=lang==="ar"?"rtl":"ltr";
+ document.querySelectorAll(".lang-btn").forEach(b=>b.classList.toggle("active",b.dataset.lang===lang));
+ document.querySelectorAll(".nav-links a").forEach((e,i)=>e.textContent=t.nav[i]);
+ document.querySelector(".hero .badge").textContent=t.badge;
+ document.querySelector(".hero-text").textContent=t.hero;
+ const acts=document.querySelectorAll(".hero .actions .btn"); acts[0].textContent=t.join; acts[1].textContent=t.explore;
+ document.querySelectorAll(".token-stat small").forEach((e,i)=>e.textContent=t.stats[i]);
+ const strong=document.querySelectorAll(".token-stat strong"); strong[2].textContent=t.type; strong[3].textContent=t.status;
+ document.querySelector(".contract-label").textContent=t.contract;
+ document.querySelector(".contract-address").textContent=t.available;
+ document.querySelector(".contract > .badge").textContent=t.verify;
+ const cr=document.querySelector("#creator .section-head"); cr.querySelector(".eyebrow").textContent=t.creator[0]; cr.querySelector("h2").textContent=t.creator[1]; cr.querySelector("p").textContent=t.creator[2]; cr.querySelector(".badge").textContent=t.creator[3];
+ const ec=document.querySelector("#ecosystem .section-head"); ec.querySelector(".eyebrow").textContent=t.eco[0]; ec.querySelector("h2").textContent=t.eco[1]; ec.querySelector("p").textContent=t.eco[2];
+ const rd=document.querySelector("#roadmap .section-head"); rd.querySelector(".eyebrow").textContent=t.road[0]; rd.querySelector("h2").textContent=t.road[1]; rd.querySelector("p").textContent=t.road[2];
+ const cm=document.querySelector("#community"); cm.querySelector(".badge").textContent=t.welcome[0]; cm.querySelector("h2").innerHTML=t.welcome[1]+"<br>NXW."; const cp=cm.querySelector("p"); cp.innerHTML="AI • COMMUNITY • WEB3 • GAMING • TECHNOLOGY<br>"+t.welcome[2]; const ca=cm.querySelectorAll(".actions .btn"); ca[0].textContent=t.follow[0]; ca[1].textContent=t.follow[1];
+ localStorage.setItem("nxw-language",lang);
+}
+document.querySelectorAll(".lang-btn").forEach(btn=>btn.addEventListener("click",()=>applyLanguage(btn.dataset.lang)));
+applyLanguage(localStorage.getItem("nxw-language")||"pt");
 </script>
 </body>
 </html>
