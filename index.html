@@ -1133,6 +1133,58 @@ body.nxw-protected img{
 .crypto-actions .btn { white-space:normal; text-align:center; cursor:pointer; font:inherit; }
 #copy-status { min-height:1.5em; font-size:.85rem; color:#63f3ff; }
 @media(max-width:600px){ .crypto-actions .btn { width:100%; } }
+
+/* Approved cinematic header — functional navigation above the artwork. */
+nav{padding:0;background:rgba(1,10,25,.98);border-bottom:2px solid #16cfee;box-shadow:0 2px 18px #00caff45;}
+.nav-inner{width:100%;max-width:2023px;min-height:88px;padding:12px clamp(16px,3vw,60px);display:flex;gap:28px;overflow:visible;border:0;border-radius:0;box-shadow:none;background:transparent;}
+.nav-inner::before{display:none;}
+.brand{flex:0 0 auto;width:auto;justify-content:flex-start;height:auto;gap:12px;padding:0;border:0;text-decoration:none;}
+.brand img{width:64px;height:64px;object-fit:contain;filter:drop-shadow(0 0 7px #00caff66);}
+.brand-name{font-size:clamp(13px,1.4vw,25px);font-weight:900;letter-spacing:2px;white-space:nowrap;color:#eef6ff;}
+.nav-right{flex:1;display:flex;justify-content:space-between;align-items:center;gap:24px;}
+.nav-links{display:flex;flex:1;justify-content:center;gap:clamp(8px,1.8vw,36px);margin:0;}
+.nav-links a,.nav-links a:first-child{min-height:52px;padding:0 2px;border:0;border-radius:0;background:transparent;box-shadow:none;color:#bac5dd;font-size:clamp(10px,.9vw,16px);letter-spacing:0;}
+.nav-links a::before{display:none;}
+.nav-links a::after{left:0;right:0;bottom:0;height:3px;border-radius:0;}
+.nav-links a:first-child,.nav-links a:hover{color:#00dbff;}
+.lang-switcher{width:auto;gap:0;padding:0;border:1px solid #124e72;border-radius:999px;overflow:hidden;flex-shrink:0;}
+.lang-btn{min-width:38px;padding:12px 10px;border:0;border-radius:999px;font-size:13px;font-weight:700;line-height:1.2;color:#c9d6f2;}
+.lang-btn::after{display:none;}
+.lang-btn:hover,.lang-btn.active{background:#05c9f4;color:#001a32;transform:none;border:0;box-shadow:none;}
+.nav-links a:focus-visible,.brand:focus-visible,.lang-btn:focus-visible,.hero-art:focus-visible{outline:3px solid #fff;outline-offset:-3px;}
+.hero{min-height:0;display:block;padding:0;overflow:hidden;scroll-margin-top:100px;}
+.hero::before{display:none;}
+/* The preview's raster menu is clipped; actual controls are rendered above. */
+.hero-art{position:relative;display:block;width:100%;aspect-ratio:2023/657;overflow:hidden;direction:ltr;}
+.hero-art img{position:absolute;left:0;bottom:0;display:block;width:100%;height:auto;max-width:none;}
+.hero-content{padding:28px 20px 42px;max-width:1100px;margin:auto;}
+.hero .hero-text{max-width:860px;margin:18px auto 22px;font-size:clamp(14px,1.1vw,18px);line-height:1.7;}
+.hero .actions{margin-top:20px;}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0;}
+#crypto,#token,#creator,#roadmap,#community{scroll-margin-top:110px;}
+@media(max-width:1200px){
+ .nav-inner{display:grid;grid-template-columns:1fr auto;gap:8px 16px;padding:10px 18px;}
+ .nav-right{display:contents;}
+ .brand{grid-column:1;grid-row:1;}
+ .brand img{width:46px;height:46px;}
+ .brand-name{font-size:16px;}
+ .lang-switcher{grid-column:2;grid-row:1;justify-self:end;}
+ .nav-links{grid-column:1/-1;grid-row:2;display:flex;justify-content:space-evenly;flex-wrap:wrap;gap:4px 14px;width:100%;}
+ .nav-links a,.nav-links a:first-child{font-size:12px;min-height:36px;}
+ #crypto,#token,#creator,#roadmap,#community,.hero{scroll-margin-top:150px;}
+}
+@media(max-width:560px){
+ .nav-inner{padding:8px 10px;gap:6px;}
+ .brand{gap:5px;}
+ .brand img{width:32px;height:32px;}
+ .brand-name{font-size:11px;letter-spacing:.7px;}
+ .lang-btn{min-width:25px;padding:9px 5px;font-size:10px;}
+ .nav-links{gap:3px 10px;}
+ .nav-links a,.nav-links a:first-child{font-size:10px;min-height:30px;white-space:normal;}
+ .hero-content{padding:22px 16px 30px;}
+ .hero .badge{font-size:9px;letter-spacing:1px;}
+}
+
 </style>
 </head>
 
@@ -1162,11 +1214,12 @@ body.nxw-protected img{
   <span>$</span>
   <span>$</span>
 </div>
-<nav>
+<nav aria-label="Main navigation">
   <div class="container nav-inner">
 
     <a class="brand" href="#about" aria-label="NXW - NEXUS CORE AI WORLD">
-      <img src="nxw-logo.png" alt="NXW - NEXUS CORE AI WORLD">
+      <img src="nxw-logo.png" alt="NXW" width="64" height="64">
+      <span class="brand-name">NEXUS CORE AI</span>
     </a>
 
     <div class="nav-right">
@@ -1179,11 +1232,11 @@ body.nxw-protected img{
       </div>
 
       <div class="lang-switcher" aria-label="Language selector">
-        <button class="lang-btn active" type="button" data-lang="pt" title="Português" aria-label="Português">🇧🇷</button>
-        <button class="lang-btn" type="button" data-lang="en" title="English" aria-label="English">🇺🇸</button>
-        <button class="lang-btn" type="button" data-lang="ja" title="日本語" aria-label="日本語">🇯🇵</button>
-        <button class="lang-btn" type="button" data-lang="ko" title="한국어" aria-label="한국어">🇰🇷</button>
-        <button class="lang-btn" type="button" data-lang="ar" title="العربية — الإمارات" aria-label="العربية — الإمارات">🇦🇪</button>
+        <button class="lang-btn active" type="button" data-lang="pt" title="Português" aria-label="Português">PT</button>
+        <button class="lang-btn" type="button" data-lang="en" title="English" aria-label="English">EN</button>
+        <button class="lang-btn" type="button" data-lang="ja" title="日本語" aria-label="日本語">JA</button>
+        <button class="lang-btn" type="button" data-lang="ko" title="한국어" aria-label="한국어">KO</button>
+        <button class="lang-btn" type="button" data-lang="ar" title="العربية — الإمارات" aria-label="العربية — الإمارات">AR</button>
       </div>
     </div>
 
@@ -1191,6 +1244,9 @@ body.nxw-protected img{
 </nav>
 
 <header class="hero" id="about">
+  <a class="hero-art" href="https://pump.fun/coin/qzsz1cxbvjTbyigtxX1Q5sW5Ro45optW9nhpPvfpump" target="_blank" rel="noopener noreferrer" aria-label="NXW — Pump.fun">
+    <img src="nxw-hero-v2.webp" width="2023" height="777" fetchpriority="high" alt="NEXUS CORE AI — MEMECOIN UNIVERSE. NXW, CAT-X, BiBiGIRL. AI, Web3, gaming and global community.">
+  </a>
 
   <div class="container hero-content">
 
@@ -1198,13 +1254,7 @@ body.nxw-protected img{
       ● SOLANA • WEB3 • COMMUNITY
     </div>
 
-    <div class="coin logo-coin">
-  <img src="nxw-logo.png" alt="NXW - NEXUS CORE AI WORLD">
-    </div>
-
-    <h1>NXW</h1>
-
-    <h2>NEXUS CORE AI GLOBAL</h2>
+    <h1 class="sr-only">NEXUS CORE AI — MEMECOIN UNIVERSE</h1>
 
     <p class="hero-text">
       The community memecoin of the NEXUS CORE AI GLOBAL ecosystem,
@@ -1745,3 +1795,4 @@ applyLanguage(localStorage.getItem("nxw-language")||"pt");
 
 </body>
 </html>
+
