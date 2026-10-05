@@ -1185,6 +1185,10 @@ nav{padding:0;background:rgba(1,10,25,.98);border-bottom:2px solid #16cfee;box-s
  .hero .badge{font-size:9px;letter-spacing:1px;}
 }
 
+/* Country flags keep the existing language actions and accessible labels. */
+.lang-btn{min-width:40px;padding:9px 8px;font-size:22px;line-height:1.2;}
+.lang-btn span{display:block;font-family:"Noto Color Emoji","Apple Color Emoji","Segoe UI Emoji",sans-serif;}
+@media(max-width:560px){.lang-btn{min-width:26px;padding:7px 3px;font-size:18px;}}
 </style>
 </head>
 
@@ -1232,11 +1236,11 @@ nav{padding:0;background:rgba(1,10,25,.98);border-bottom:2px solid #16cfee;box-s
       </div>
 
       <div class="lang-switcher" aria-label="Language selector">
-        <button class="lang-btn active" type="button" data-lang="pt" title="Português" aria-label="Português">PT</button>
-        <button class="lang-btn" type="button" data-lang="en" title="English" aria-label="English">EN</button>
-        <button class="lang-btn" type="button" data-lang="ja" title="日本語" aria-label="日本語">JA</button>
-        <button class="lang-btn" type="button" data-lang="ko" title="한국어" aria-label="한국어">KO</button>
-        <button class="lang-btn" type="button" data-lang="ar" title="العربية — الإمارات" aria-label="العربية — الإمارات">AR</button>
+        <button class="lang-btn active" type="button" data-lang="pt" title="Português" aria-label="Português"><span aria-hidden="true">🇧🇷</span></button>
+        <button class="lang-btn" type="button" data-lang="en" title="English" aria-label="English"><span aria-hidden="true">🇺🇸</span></button>
+        <button class="lang-btn" type="button" data-lang="ja" title="日本語" aria-label="日本語"><span aria-hidden="true">🇯🇵</span></button>
+        <button class="lang-btn" type="button" data-lang="ko" title="한국어" aria-label="한국어"><span aria-hidden="true">🇰🇷</span></button>
+        <button class="lang-btn" type="button" data-lang="ar" title="العربية — الإمارات" aria-label="العربية — الإمارات"><span aria-hidden="true">🇦🇪</span></button>
       </div>
     </div>
 
